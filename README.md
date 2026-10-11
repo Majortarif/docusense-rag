@@ -1,5 +1,7 @@
 # DocuSense: Grounded RAG Service
 
+[![CI](https://github.com/Majortarif/docusense-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/Majortarif/docusense-rag/actions/workflows/ci.yml)
+
 A small FastAPI microservice that ingests internal policy documentation, embeds it, stores it in an embedded FAISS index, and answers questions **only** from that documentation. When the answer is not in the document it returns one fixed fallback sentence and does not guess:
 
 > The provided documentation does not contain sufficient information to answer this question.
