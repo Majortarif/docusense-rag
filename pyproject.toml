@@ -1,0 +1,25 @@
+[project]
+name = "docusense-rag"
+version = "1.0.0"
+description = "Lightweight grounded RAG service with anti-hallucination guardrails"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: uses the real embedding model and policy document (downloads the model on first run)",
+    "live: calls the Anthropic API (requires ANTHROPIC_API_KEY)",
+]
+filterwarnings = [
+    "ignore::UserWarning:huggingface_hub.*",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["SIM905"]  # the stopword list reads better as one split string

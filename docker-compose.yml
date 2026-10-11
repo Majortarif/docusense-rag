@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    image: docusense-rag:latest
+    container_name: docusense-api
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "8000:8000"
+    volumes:
+      # Swap in your own documents without rebuilding: the index is rebuilt on startup
+      # whenever the mounted documents differ from the ones baked into the image.
+      - ./data:/app/data:ro
+    restart: unless-stopped
